@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso Basico Javascript</title>
+</head>
+<h1><b>Condicionales</b></h1>
+<h2><b>Organismo de control</b></h2>
+<p>Es el organismo que permite controlar el flujo de tu programación</p>
+
+<h2><b>If --- Else</b></h2>
+
+<p>Es una estructura que me permite tomar una desición y si esta condicion se cumple permite ejecutar ciertas
+  acciones.</p>
+<p><b>Comencemos con el codigo en JS</b></p>
+
+<script>
+  //  Comencemos  con una variante edad que sea de 18
+  let edad = 17;
+
+  // Luego aplicamos esta formula de IF...ELSE
+  if (edad > 18) {
+    console.log("Eres mayor de edad")
+  } else {
+    console.log("Eres menor de edad")
+  }
+  // COmo usamos mayor que (>) este nos devuelve ne la consola "Heres menor de edad".
+  //Necesitaremos usar otra forma para que tome el valor mayor de edad en 18 años.
+  //Usando el operacion relacional compuesto >= nos dará "Eres mayor de edad"
+
+  if (edad >= 18) {  // Usnado (>=)
+    console.log("Eres mayor de edad")
+  } else {
+    console.log("Eres menor de edad")
+  }
+
+  //SI usamos (<) nos dar{a "Eres menor de edad"}
+
+  if (edad < 18) {  //Usamos (<)
+    console.log("Eres mayor de edad")
+  } else {
+    console.log("Eres menor de edad")
+  }
+  //Utilisando solamente ><, excluyes el valor que coloques
+
+  //Veremos un ejemplo con 4 opciones difrerentes
+
+  //IF / ELSE IF / ELSE
+  //Estoy durmiendo de 0hs a 5hs
+  //Buenos días de 6hs a 11hs.
+  //Buenas tardes de 12hs a 18hs.
+  //Buenas noches de  19hs a 23hs.
+
+  //Necesitaremos en este ejemplo el operador lógico &&
+
+  let hora = 3;
+  if (hora >= 0 && hora <= 5) {
+    console.log("Estoy durmiendo")
+  } else if (hora >= 6 && hora <= 11) {
+    console.log("Buenos días")
+  } else if (hora >= 12 && hora <= 18) {
+    console.log("Buenas tardes")
+  } else {
+    console.log("Buenas noches")
+  }
+  // En el ejemplo colocamos 3 nos dará "Estoy durmiendo"
+
+//Veamos ahora un simplificador de ELse If. Se llama (Operador Ternario)
+</script>
+
+<h2>Operador Ternario</h2>
+<p>Aqui queremos resolver una respuesta en verdadero o falso en una sola línea de código</p>
+<script>
+  //Es condición de if ellse pero en una linea de código
+  console.log("Operador Ternario")
+
+  let sosMayorDeEdad = (edad >= 18) ? "Sos Mayor de edad" : "Sos menor de edad";
+  console.log(sosMayorDeEdad);
+  //Se utilza cuando esperamos resultados verdadero o falso, en una sola line de codigo lo podemos hacer.
+  //En este caso usamos el let edad anteriormente escrito que se encuentra dentro del bloque de codigo <script> anterior.
+  //Lo podemos escribir de una manera que no ocupe mucho espacio horizontal den la pantalla de la siguiente manera. Utilizaremos un let con otro nombre.
+  let eresMayorDeEdad = (edad >= 18)
+    ? "Sos Mayor de edad"
+    : "Sos menor de edad";
+</script>
+
+<h2>Switch - Case</h2>
+<p>Lo utilizaremos cuando necesitemos evaluar diferentes valores o condiciones para una misma variable</p>
+<p>Consideremos que cada días de la semana tiene una posición siendo domingo punto de partida como días cero (0)</p>
+<script>
+  //Switch nos da una opcion a considerar, daremos los dias de la seman en cada (case) separados por un (break) cada una.
+  let dia = 2;
+  //En el Key colocamos la variante que usaremos, en este caso el (let dia)
+  switch (dia) {
+    case 0:
+      console.log("Domingo")
+      break;
+    case 1:
+      console.log("Lunes")
+      break;
+    case 2:
+      console.log("Martes")
+      break;
+    case 3:
+      console.log("Miercoles")
+      break;
+    case 4:
+      console.log("Jueves")
+      break;
+    case 5:
+      console.log("Viernes")
+      break;
+    case 6:
+      console.log("Sabado")
+      break;
+
+    default:
+      console.log("No existe ese día")
+      break;
+  }// El default se coloca en el caso de que algun valor colocado en la variante dia este fuera de nuestros case definidos por ejemplo si pongo 8. En este caso ponemos el texto que querramos como "No existe ese día"
+</script>
+
+<body>
+
+</body>
+
+</html>
