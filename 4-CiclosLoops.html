@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciclos (Loops)</title>
+</head>
+
+<body>
+  <p>Bucles, ciclos, que avaluan una condicion, lineas de condigo que se ejecutan en variiables que iran variando, este
+    ciclo se repite hasta que se cumpla una condición o valor buscado.</p>
+  <p>
+  <h2><b>Ejemplo:</b></h2> Vemos las compras hechas en un comercio desde una aplicación externa, hacemos la petición
+  devolviendonos un objeto. De 10 compras echas deve quedar registrado en el historial. Podemos ir registrando cada
+  articulo de compra en la interfase, esto puede ejecutarse de manera repetitiva.
+  Estaremos viendo las distintas formas de realizar con distintas herramientas en los siguientes textos</p>
+
+  <p>
+  <h2><b>While / Dowhile</b></h2>
+  </p>
+  <p>Ambis cada vez se usan menos ho en día. Intentaremos realizar un contador que tenga final en 10. A tener en cuenta
+    sobre los bocles infinitos, el no
+    realizarlos es importante para tener en cuenta</p>
+  <script>
+    let contador = 0;
+
+    while (contador > 10);
+    Console.log(contador)
+    //console.log(contador), si pusieramos de esta forma haria cada iteracion de forma infinita ya que sobrapasara el numero 10 y seguira sin final.
+
+    //esultado sera que contará hasta 9
+
+    while (contador < 10) {
+      console.log("While" + contador);
+      contador++;    //++ Significa que avance de a uno los numeros.
+    }
+    // Ahora veremos el DO/ WHILE
+    do {
+      console.log("DoWhile" + contador);
+      contador++;
+    } while (contador < 10);
+
+    //Diferencia entre ambos. While siempre comparará antes de ejecutar las lineas dentro del ciclo. Mientras que el Do/While al menos se va a ejecurar todo el codigo y luego considerera si se da el caso o no.
+  </script>
+  <h2><b>Bucle for</b></h2>
+  <script>
+    // Este es  más usado que los anteriores actualmente.
+    // for (inicializacion de variable; condición; decremento o incremento) { sentencia que ejecuta el for}
+
+    for (let i = 0; i < 10; i++) {
+      console.log("for" + i);
+    }
+
+    let numeros = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+
+    for (let i = 0; i < numeros.length; i++) {  //i comenzara en cero, sera menor a el total  del arreglo .length y avansará de a uno i++. SI pusiera 5 en vez de .length daria hasta 50.
+      console.log(numeros[i]);  // imprimira la posición i. Dara el total de la lista, si imprieramos ssin posición i daria 10 veces la lista completa.
+    }
+  </script>
+  <h2>For in</h2>
+  <p>Me permitirá recorrer o iterar las propiedades de un objeto/ arreglo. Veamos el código como se ejecuta</p>
+
+  <script>
+    const datos = {   // definiremos el objeto const
+      nombre: "Roberto",
+      apellido: "Guti",
+      edad: 12,
+    }
+
+    for (const propiedad in datos) {  // aca nos pide declara la variable que queremos imprimir.
+      console.log(propiedad)  // Imprimirá las propiedades (nombre, apellido, edad).
+    }
+    for (const propiedad in datos) {
+      console.log(`key: ${propiedad}, value: ${propiedad}`); // Nos devuelve de la siguiente manera.'key: nombre, value: nombre'
+      //'key: apellido, value: apellido''key: edad, value: edad'.  No cumple con nuestro objetivo de el valor de un elemento.
+    }
+
+    //Probemos otra forma para ver que pasa
+    for (const propiedad in datos) {
+      console.log(`key: ${propiedad}, value: ${datos.propiedad}`); //Aqui le agregamos datos a propiedades pero nos devueve undefine en vez del valor. 'key: nombre, value: undefined'      'key: apellido, value: undefined'      'key: edad, value: undefined'
+
+      //Para ver el valor de una propiedad o de propiedades de un objeto, en este caso de la constante datos usaremos los corchetes [ .. ]
+      for (const propiedad in datos) {
+        console.log(`key: ${propiedad}, value: ${datos[propiedad]}`);
+      }  // Nos devuelve las propiedades con sus valores
+      //'key: nombre, value: Roberto'      'key: apellido, value: Guti'      'key: edad, value: 12'
+
+  </script>
+
+  <h2><b>For Of</b></h2>
+  <p>EL for of permite iterar elementos de cualquier objeto que sea iterable en javascript. Veamos su uso</p>
+
+  <script>
+      //* Usaremos el let anteriormente definido   let numeros = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+
+      for (const elemento of numeros) { // decimos que queremos recorrer cada elemento de numeros
+        console.log(elemento)
+        // Solemos usar for of al trabajar con arreglos
+      }
+      //Probemoslo ahora en cadena de texto
+
+      let cadena = "Hola, como estas";
+
+      for (const caracter of cadena) {
+        console.log(caracter) // imprimirá la cadena de texto en cada renglón por cada caracter, esto mismo funciona usando `....${  }` 
+      }
+// En conclusion ForIn recorre las propiedades de un objeto primitivo,,  ForOf recorre cada uno de los elemento de cualquier objeto en javascript que sea iterabñe (partirlo en pequeños elementos)
+  </script>
+
+  <h3>Hasta aqui dimos lo básico para poder ingresar a partes con mayor desafio en la proxima clase</h3>
+</body>
+
+</html>
