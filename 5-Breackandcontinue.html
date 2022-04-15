@@ -9,7 +9,35 @@
 </head>
 
 <body>
+  <h1><b>Veremos para que sirve Breack y Continue</b></h1>
+  <p>Estas palabras nos van a ayudar a controlar el flujo de nuestras estructuras de control por ejemplo en un loop y
+    cuando
+    llegamos a cierto numero que queramos salir o romper la estructura, o saltarnos ciertas vueltas a un bucle.
+    <b>Ejemplo:</b> Queremos imprimir solamente los números pares y omitir los impares.
+  </p>
+  <p>Por que no usaremos en este ejemplo for/each?</p>
+  <p>No lo usaremos ya que Breack y Continue no se pueden usar con metodos de arreglos. Se usan con estructuras de
+    control como (Fof, wild, dowild, case, etc.</p>
+  <p><b>Ahora veamos el código</b></p>
+  <script>
+    const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
+    for (let i = 0; i < numeros.length; i++) {
+      // console.log(i);   Nos imprimira 0,1,2,3,4,5,6,7,8,9. No es el orden exacto que queremos.
+      console.log(numeros[i]);  // Nos imprimira el orden exacto al ejemplo de la constante.
+      if (i === 5) {  //Aqui decimos que queremos que se rompa al legar a 5
+        breack  // EL breack rompe el siclo;
+      }
+    }
+    for (let i = 0; i < numeros.length; i++) {
+      if (i === 5) {
+        continue;   // HAce que cuente desde el 0 pero se salta la posicion 5 que seria el numero (6) para luego seguir con el ciclo. El continue se salta la iteración.
+      }
+      console.log(numeros[i])
+    }
+
+  </script>
+  <h2>Breack nos ayuda a salirnos de la estructura al cumplirse el codigo que especificamos anteriormente</h2>
 </body>
 
 </html>
