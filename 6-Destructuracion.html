@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destructuración</title>
+</head>
+
+<body>
+  <h1><b>Sobre la Destructuración</b></h1>
+  <p>Javascript nos ofrece nuevas caractaresticas desde el año 2015. La practica de destructuración es una nueva forma
+    de asignar valores a arreglos y objetos.</p>
+  <h2><b>Ahora veamos como se aplica</b></h2>
+
+  <script>
+
+    const numeros = [1, 2, 3];
+
+    //Asi lo realizaríamos sin destructurarlo para lograr una variable por cada número
+    let uno = numeros[0];
+    let dos = numeros[1];
+    let tres = numeros[2];
+
+    console.log(uno, dos, tres);  // Me imprime 123
+
+    //Ahora veremos con destructuración usando la variable numeros anterior como base
+
+    const [one, two, three] = numeros;
+
+    console.log(one, two, three);// Me imprime de igual manera 123
+
+    //Veremos lo mismo en un objeto
+    const persona = {  // Este objeto puede crearse como let o como const
+      nombre: "Rob",
+      apellido: "Guti",
+      mail: "mimail@gmail.com"
+    }
+
+    let { nombre, apellido, mail } = persona; //A diferencia del anterior usamos llaves y no corchetes, es importante tambien que las variables creadas tengan el mismo nombre de las propiedades creadas.
+
+    console.log(nombre, apellido, mail);
+  </script>
+</body>
+
+</html>
