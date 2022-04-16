@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objetos Literales</title>
+</head>
+
+<body>
+  <h1><b>Sobre los Objetos Literales </b></h1>
+  <p>Es una nueva forma de escribir y asignar atributos y métodos</p>
+  <script>
+    //Primero declaramos un objeto con dos propiedades
+
+    let nombre = "Ágata"
+    edad = 9;
+
+    //Veremos la forma antigua de declarar
+    const gato = {  //Declaramos un objeto con propiedades  una funcion
+      nombre: nombre,
+      edad: edad,
+      maullar: function () {
+        console.log("Miau, Miau!!")
+      }
+    }
+    //Veremos invocar 
+    console.log(gato)  //Dara nombre Agata  edad 9
+    gato.maullar() // Dara Miau Miau!!
+
+    //Ahora veremos la nueva formula
+
+    const cat = {
+      nombre,
+      edad,
+      //Veremos que se puede agregar mas propiedades de la siguiente manera
+      raza: "callejero",
+      vacunado: false, // de esta forma facil logramos más propiedades
+      ladrar() {  // a diferencia de la funcion anterior borramos el function y los dos puntos
+        console.log("Miauuuuuu,")
+      }
+    }
+    console.log(cat); // //Dara nombre Agata  edad 9
+  </script>
+
+</body>
+
+</html>
