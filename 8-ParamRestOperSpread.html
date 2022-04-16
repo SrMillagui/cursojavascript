@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parametros Rest - Operador Spread </title>
+</head>
+
+<body>
+  <h2><b>Sobre parametro Rest</b></h2>
+  <p> Son una forma de ir agregando parametros infinitos a una funcion o dentro de una variable. Imagina que tienes una
+    arreglo pero no sabes exactamente cuantos valores vas a recibir y posteriormente con estos valores vas a realizar
+    ciertas operaciones, procesos.
+    Entonces para definirlos hay que anteponer tres puntos suspensivos antes del nombre donde estan guardados estos
+    posibles valores infinitos.</p>
+
+  <h2><b>Veamos ahora como se aplica en JS</b></h2>
+
+  <script>
+    function sumar(a, b, ...c) { //Recibo dos valores o tres o más
+      let resultado = a + b; // se aplicara una suma de a + b que representaran los valores que ya tengo <SEGUROS></SEGUROS>
+      c.forEach(function (n) { //Todo lo demas sera considerado un arreglo y aplicamos el metodo forEach, este recibe una función y esta se va aplicar en cada uno de los elementos que venga dentro de C
+        resultado += n; // se lo sumara a lo que ya vale el resultado
+      });
+      return resultado
+    }
+    //Veamos ahora como va aplicando la suma todo numero que agregue con comas en el console.log
+    console.log(sumar(1, 2, 5, 2)) // el resultado es 10 y puedo seguir agregando mas números
+    console.log(sumar(1, 2, 5, 2, 4))
+    console.log(sumar(1, 2, 5, 2, 4, 5))
+    console.log(sumar(1, 2, 5, 2, 4, 5, 8))
+
+  </script>
+  <h2><b>Operador Spread o de Propagación</b></h2>
+  <p>Usamos el Spread cuando tengamos que expandir una expreción agregando o expandiendo multiples argumentos o
+    elementos.</p>
+  <p>En el siguiente fragmento de codigo vamos a ver un arreglo con cierta cantidad de numeros de elemntos, lego recive
+    nuevos parametros. No usaremos Push, ni concadenaciones. veremos que usa también puntos suspensivos y este puede
+    aplicar en cualquier sentencia de nuestro código.</p>
+  <h2><b>Veamos ahora el codigo en JS</b></h2>
+
+  <script>
+    const arr1 = [1, 2, 3, 4, 5], //prestar atencion en la coma al final para seguir con arr2
+      arr2 = [6, 7, 8, 9, 10];
+
+    const arr3 = [arr1, arr2];
+
+    console.log(arr3)// Nos mostratará 
+    // [[1, 2, 3, 4, 5],       [6, 7, 8, 9, 10]]
+    // si agregamos los puntos suspensivos adelante de los arr1 y arr 2 uniremos ambos en uno, crearemos otro arrglo 4
+    const arr4 = [...arr1, ...arr2];
+    console.log(arr4) //Nos imprime [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+  </script>
+</body>
+
+</html>
