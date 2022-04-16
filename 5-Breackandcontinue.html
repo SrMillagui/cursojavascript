@@ -17,23 +17,24 @@
   </p>
   <p>Por que no usaremos en este ejemplo for/each?</p>
   <p>No lo usaremos ya que Breack y Continue no se pueden usar con metodos de arreglos. Se usan con estructuras de
-    control como (Fof, wild, dowild, case, etc.</p>
+    control como (For, wild, dowild, case, etc.</p>
   <p><b>Ahora veamos el código</b></p>
   <script>
     const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
     for (let i = 0; i < numeros.length; i++) {
       // console.log(i);   Nos imprimira 0,1,2,3,4,5,6,7,8,9. No es el orden exacto que queremos.
-      console.log(numeros[i]);  // Nos imprimira el orden exacto al ejemplo de la constante.
+      //console.log(numeros[i]);  // Nos imprimira el orden exacto al ejemplo de la constante.
       if (i === 5) {  //Aqui decimos que queremos que se rompa al legar a 5
-        breack  // EL breack rompe el siclo;
+        break  // EL breack rompe el siclo;
       }
+      console.log(numeros[i]); //Nos imprimira 0,1,2,3,4,5 solamente ya que el break aparece  en === 5 osea lee el número 5 y cortará
     }
     for (let i = 0; i < numeros.length; i++) {
       if (i === 5) {
         continue;   // HAce que cuente desde el 0 pero se salta la posicion 5 que seria el numero (6) para luego seguir con el ciclo. El continue se salta la iteración.
       }
-      console.log(numeros[i])
+      console.log(numeros[i])  //Imprime 0,1,2,3,4,5,7,8,9. Se salta el número 6 ya que lee el 5 y se activa el continue al igual que el ejemplo anterior.
     }
 
   </script>
