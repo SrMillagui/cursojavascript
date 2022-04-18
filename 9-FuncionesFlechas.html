@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrow Functions - Funciones Flechas</title>
+</head>
+
+<body>
+  <h1><b>Sobre las Arrow function/Funciones Flechas</b></h1>
+  <p>No solamente ayudan a ser mas sintético nuestra programación sino que también tienen otras caracteristicas que
+    veremos en los siguientes renglones. </p>
+  <p>1_ Es una Nueva forma de definir funciones anónimas que sean expresadas, diferencien esta de las declaradas. Una
+    función expresada es cuando se le asigna el valor de una función anónima.</p>
+  <p><b>Veamos ahora como es esto en JS</b></p>
+  <script>
+    //Función anónima
+    const saludar = function () {  //Variable con una función anónima ()
+      console.log("Hola")       //texto dentro de la función
+    }
+    console.log(saludar);  //Imprimirá Hola
+
+    //Función anónima
+    function saludo() {  // La funcion tiene el nombre de saludo
+      console.log("Hola");
+
+      //La función flecha
+      //Quitamos las llaves y agruegamos un igual con mayor
+      //const saludar = () => console.log("Hola");
+
+      //Ahora para recibir parametros con una función flecha
+      const saludar = nombre => console.log(`Hola ${nombre}`); //pido el nombre y saludamos a lo que el usuario me pase. Esto tambien es un return implisito.
+    }
+
+    //Cuando una función flecha no recibe parametros se usa los parentesis () vacios. Al recibir parametros como en el ejemplo nombre ya no es necesario poner parentesis.
+
+    //Ahora veamos otro ejemplo donde aplicamos la formula anterior y luego con el uso de arrow function
+
+    // const sumar = function (a, b) {
+    // return (a + b)
+    // }
+    // console.log(sumar(5, 5))
+
+    // const sumar = (a, b) => console.log(`${a} + ${b}`)
+    //sumando(8, 2)// Si invocamos en vez de darnos el resultado nos dará 8 + 8
+
+    //Ahora veremos el mismo ejemplo pero de forma que podamos realizar la operacion de suma correctamente
+    const sumando = (a, b) => a + b  //retiramos el console.log, etc
+    sumando(2, 2)  //Invocamos y nos realiza la suma correctamente
+
+    //Ahora veremos funcion de varias lineas. EN este caso si usa llaves
+
+    const funcionConLineas = () => {
+      console.log(1);
+      console.log(2);
+      console.log(3);
+    }
+
+    //Ahora crearemos una variante donde queremos que ejecute una funcion para cada elemento de un arreglo. Para est usamos forEach.
+
+    /*const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    numeros.forEach(function (el, index) { //variante numeros tiene un forEch por lo tanto despues se declara una funcion que que recibe el elemento del arreglo(el), la posición (index)
+     /*
+    //El console.log nos imprimirá esto 'El elemento 1 esta en la posición 0'
+     /* 'El elemento 2 esta en la posición 1'
+      'El elemento 3 esta en la posición 2'
+      'El elemento 4 esta en la posición 3'
+      'El elemento 5 esta en la posición 4'
+      'El elemento 6 esta en la posición 5'
+      'El elemento 7 esta en la posición 6'
+      'El elemento 8 esta en la posición 7'
+      'El elemento 9 esta en la posición 8'*/
+
+    /*Veamos como se realizario lo mismo pero con un arrow function*/
+    const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    numeros.forEach((el, index) => { //Eliminé la palabra function y agregué el arrow function
+      console.log(`El elemento ${el} esta en la posición ${index}`);
+    })
+
+    /*Por ultimo podremos eliminar hasta las llaves y nos quedaria un codigo más limpio y en una sola línea
+   numeros.forEach((el, index) =>
+      console.log(`${el} esta en la posición ${index}`)
+    )*/
+    /*Una caracteristica de las arrow function. Por ejemplo  This, hace referenncia  al objeto o al contexto, como cuando creo una funcion, objeto, bloque con las llaves. También existe un contexto global pero esto daremos más adelante.
+    Las arrow function capturalel conexto donde se encuentren*/
+
+    /* Ahora veremos como this captura el contexto en donde este creando primero una funcion y despues un objeto. Veremos que al crear una funcion captura el entorno en donde esté en este caso la ventana de windows y en el caso del elemento capturara las distintas parte del elemento. Veamos estos dos ejemplos.*/
+    //La Función
+    /*function perro() {
+      console.log(this)
+    }*/
+    //perro();  Nos imprime muchisimo texto informativo del programa
+
+    //EL elemento
+    /*const perro = {
+      nombre: "Fifi",
+      ladrar: function () {
+        console.log(this)
+      }
+    }*/
+    //perro.ladrar()  //Nos imprime { nombre: 'Fifi', ladrar: ƒ ladrar() }
+
+    /*Pero si le agrego el arrow function suprimiendo la palabra function este volvera a capturar el entorno global y no el entorno del elemento
+    const perro = {
+    nombre: "Fifi",
+    ladrar: ()=>{         Aqui aplicamos el arrow Function.
+      console.log(this)
+    }
+  }*/
+
+    /* Por esto se recomienda crear los métodos dentro de un objeto literal usal la palabra function y no las Arrow Function*/
+
+    //Ahora veamos borrando la palabra function y ademas los dos puntos. Veremos que reconoce nuevamente el elemento en donde estamos trabajando.
+
+    /* const perro = {
+         nombre: "Fifi",
+         ladrar () {         Aqui aplicamos el arrow Function.
+           console.log(this)
+         }
+       }*/
+  </script>
+
+</body>
+
+</html>
