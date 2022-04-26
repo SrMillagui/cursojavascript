@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objeto Math</title>
+</head>
+
+<body>
+  <h1><b>Objeto Math</b></h1>
+  <p>Ol objeto Math s un objeto estatico por lo tanto cada vez que lo querramos utilizar tenemos que invocar al
+    prototypo, al objeto siempre. Quiere decir que escribiremos Math siempre</p>
+
+  <h2><b>Veamos algunos ejemplos en JS y como se vinculan entre ellos</b></h2>
+  <script>
+    console.log(Math);// Nos mostrara un gran menu entre ellos numeros estrucurados como por ejemplo el PI. SI invocamos Math.PI  nos mostrará este número PI.
+    //Veremos algunos más con su respectiva explicación.
+    console.log(Math.abs);// Nos muestra el valor absoluto de un número sea en positivo o negatinvo.
+    console.log(Math.ceil);// Redondea un número  a su mayor valor.
+    console.log(Math.floor); //Redondea un número  a su menor valor.
+    console.log(Math.round); //Redondea al valor más cercano.
+    console.log(Math.sqrt(20));// saca la raiz cuadrada de un número, en este caso puse 20.
+    console.log(Math.pow(2, 5)); //Elevar potencia, el primer numero es la base el segunda la potencia.
+    console.log(Math.sign(-5));// Muestra si es negativo o positivo. Dara negativo con (-1) y si es positivo dar (1).
+    console.log(Math.random); //Dará números aleatorios entre 0 y 1. Para aumentar el nivel a  por ejemplo 100, se coloca random()*100 y dara números randoms hasta 100. 
+    console.log(Math.random() * 100);// Como Nos dará con fracciones aplicaremos Math.round para redondear.
+    console.log(Math.round(Math.random() * 100));
+  </script>
+
+</body>
+
+</html>
