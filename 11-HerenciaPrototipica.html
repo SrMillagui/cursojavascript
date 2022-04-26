@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herencia Prototipica</title>
+</head>
+
+<body>
+  <script>
+    function Humano(nombre, nacionalidad) {
+      //Atributos:
+      this.nombre = nombre;
+      this.nacionalidad = nacionalidad;
+    }
+    //Métodos agregados al prototypo de la función constructora
+    Humano.prototype.saludo = function () {
+      console.log("Hola saludo en mi idioma que es el español");
+    }
+    Humano.prototype.saludar = function () {
+      console.log(`Hola, mi llamo ${this.nombre}`) //Atencion de usa this para salir del bloque y leer el nombre de la funcion constructora
+    }
+
+    //Herencia Prototipica
+    /*Vamos a crear una funcion donde colocaremos los dos atributos la función Humano y agregaremos una más. Crearemos una variable con this que tenga la herencia de la funcion Humano.*/
+
+    function Alumno(nombre, nacionalidad, temario) { //Heredó dos atributos y agregue una.
+      this.super = Humano; //Invoca los dos atributos de humano completas
+    } this.super(nombre, nacionalidad); //Coloco los dos heredados
+    this.temario = temario; //Agrego la variable con el atributo nuevo
+
+    //hasta aqui asociamos la herencia.
+
+    //Ahora realizamos la herencia. Alumno hereda de Humano.
+    Alumno.prototype = new Humano(); // Declaro que Alumno sera una nueva instancia de Humano, Seria usar los datos de humano. El parentesis esta bacio ya que ya esta desarrollado anteriormente en la funcion.
+    Alumno.prototype.constructor = Alumno; // Aqui uso los datos de Alumno.
+
+    //Ahora veremos sobreescribir un metodo del Padre (Humano) en el Hijo (Alumno)
+    Alumno.prototype.saludar = function () {
+      console.log("Te saludo en mi idioma")
+    }
+    //Nuevo metodo
+    Alumno.prototype.idioma = function () {
+      console.log("Mi Idioma es el Español")
+    }
+    //cambaremos de Humano a Alumno
+    const paco = new Alumno("Paco", "Paraguay"),
+      paola = new Humano("Paola", "España");
+
+    //Veamos que imprime
+    console.log(paco)
+    console.log(paola)
+
+    paco.saludo()
+    paco.saludar()
+
+  </script>
+</body>
+
+</html>

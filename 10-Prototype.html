@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype</title>
+</head>
+
+<body>
+  <h1><b>Sobre Javascript</h1></b></h1>
+  <p>JS es un lenguaje multiparadigma, como la prograación funcional y la orientada objetos (POO). La más usada es la
+    programación orientada a objetos.</p>
+  <h2>Que es un Prototype</h2>
+  <p>Es el mecanismo por el cual un objeto puede heredar de un objeto padre atributos y métodos (Funciones).</p>
+  <p>Ahora veremos las propiedades que tiene el POO</p>
+  <li><b>Clases:</b></li>
+  <p>Esquema o modelo a seguir para luego poder generar instancias.</p>
+  <li><b>Objetos:</b> </li>
+  <p>Es una instancia o copia de una clase</p>
+  <li><b>Atributos:</b></li>
+  <p>Es una caracteristica o propiedad del objeto. (Son variables dentro de un objeto).</p>
+  <li><b>Métodos:</b></li>
+  <p>Son las acciones que un objeto puede realizar, ejemplo console.log, console.error. (Son funciones dentro de un
+    objeto).</p>
+
+  <h2><b>Ahora veamos como se aplica esto en JS</b></h2>
+
+  <script>
+    const persona = {
+      nombre: "Yoyo",
+      pais: "Paraguay",
+      saludo() {
+        console.log("Baico Chiru")
+      }
+    }
+    console.log(persona)
+    /*Si quisiera crear otra const persona con otro nombre pero mismas propiedades podria copiar y pegar pero para eso podemos usar las Clases.*/
+
+    /* Funcion cosntructura, ya que de este crearemos nuevas instancias, objetos usando como base esta funcion constructora. Recordatorio al poner nombre a una clase siempre colocar la primer letra en Mayuscula Ej. class NombreClase {
+      
+    }*/
+
+    //Veamos un ejemplo de función Constructora
+
+    /*function Humano(nombre, nacionalidad) { //declaro las propiedades de la funcion como parametros (Nombre, nacionalidad)
+      //Atributos:
+      this.nombre = nombre;  //This hace referencia a la misma función donde está. This.nombre será igual a lo que el usuario me pase en nombre. Lo mismo en nacionalidad, estos son los atributos de la funcion
+      this.nacionalidad = nacionalidad;
+      //Métodos:
+      this.saludo = function () { //Usamos esta estructura en atributos usando this. Colocamos function para no tener problemas  de error.
+        console.log("Hola saludo en mi idioma que es el español");
+      }
+      //Haremos otro console.log como saludo personalizado
+      this.saludo = function () {
+        console.log(`Hola, mi llamo ${nombre}`)
+      }
+    }
+
+    //Ahora generemos los atributos y metodos de la funcion constructora en personas nuevas.
+
+    /* Crearemos una variable, usaremos la palabra new donde pondremos la funcion constructora Humano, pondremos sus dos parametros (nombre y nacionalidad)*/
+    /*const paco = new Humano("Paco", "Paraguay"),
+      paola = new Humano("Paola", "España");*/
+
+    /* console.log(paola); // Nos imprimira
+    Humano {
+       nombre: 'Paola',
+         nacionalidad: España,
+           saludo: ƒ(),
+             __proto__: { constructor: ƒ Humano() }
+}*/
+
+    // EL inconveniente que vemos es que el metodo queda dentro de la funcion constructora, la quitaremos fuera de las llaves y quitaremos los this. para que no salga de la función. Agregaremos Nombre de la funcion constructora.prototype.nombre del atributo. Al hacer esto no se publicara los console.log (metodos) en todos los usuarios y estara separado para su uso como contructor al mismo tiempo.
+
+
+    function Humano(nombre, nacionalidad) {
+      //Atributos:
+      this.nombre = nombre;
+      this.nacionalidad = nacionalidad;
+    }
+    //Métodos agregados al prototypo de la función constructora
+    Humano.prototype.saludo = function () {
+      console.log("Hola saludo en mi idioma que es el español");
+    }
+    Humano.prototype.saludar = function () {
+      console.log(`Hola, mi llamo ${this.nombre}`) //Atencion de usa this para salir del bloque y leer el nombre de la funcion constructora
+    }
+
+
+    const paco = new Humano("Paco", "Paraguay"),
+      paola = new Humano("Paola", "España");
+
+    //Veamos que imprime
+    console.log(paco)
+    console.log(paola)
+
+    paco.saludo()
+    paco.saludar()
+
+    paola.saludo();
+    paola.saludar();
+      //De esta manera obtenemos mejor  rendimiento obteniendo este resultado en su impresion.
+    /* Humano {
+nombre: 'Paco',
+nacionalidad: 'Paraguay',
+__proto__: {
+  constructor: ƒ Humano(),
+  saludo: ƒ (),
+  saludar: ƒ ()
+}
+}
+Humano {
+nombre: 'Paola',
+nacionalidad: 'España',
+__proto__: {
+  constructor: ƒ Humano(),
+  saludo: ƒ (),
+  saludar: ƒ ()
+}
+}*/
+  </script>
+</body>
+
+</html>

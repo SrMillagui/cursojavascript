@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Métodos Estaticos - Getters y Setters</title>
+</head>
+
+<body>
+  <h1><b>Métodos Estaticos - Getters y Setters</b></h1>
+  <p> Getters se refiere a un metodo contenedor utilizando la palbra get. Setter es el metodo modificador y estaremos
+    utilizando la palabra set.</p>
+  <h2><b>Ahora veremos como se realiza esto en JS</b></h2>
+  <p>Estaremos usando todavia el mismo ejemplo de prototype</p>
+  <script>
+    //Pegamos la función contructora anterior y sus metodos para el siguiente ejemplo.
+    class Animal {
+      constructor(nombre, genero) {
+        this.nombre = nombre;
+        this.genero = genero;
+        this.raza = null;
+      }
+
+      sonar() {
+        console.log("Hola soy un Perro ladro");
+      }
+      ladrar() {
+        console.log("Guauu, Guauu");
+      }
+      //Agregaremos otro metodo, pero en este caso será estático.
+      //Un método estático no necesita aparecer o estanciar en una clase.
+      static queEres() {
+        console.log("El perro es el mejor amigo del Hombre");
+        /*Al invocar Perro.quEres(); nos muestra el texto, sin colocar static no se podria realizar.*/
+      }
+      //Ahora veremos los Setters y Getters
+
+      //Son método especiales que nos permiten establecer y obtener valoresde atributos de nuestra clase. Veremos primero el Obtenedor
+      //OBTENEDOR
+      //EN el siguiente metodo agregaremos un atributo mas a la clase Animal que sea igual Null usando la formula this.raza = null;
+      get getRaza() {  //get transforma en metodo obtenedor. recomendable usarlo tambien en el nombre
+        return this.raza
+      }
+      // MODIFICADOR
+      set setRaza(raza) {  //En parentesis colocamos la raza que queremos modificar, que fue declarada  anteriormente.
+        this.raza = raza; //La nueva propiedad que pusimos raza, le asignamos la propiedad de la raza en parentesis
+      }
+    }
+    //Como invocamos el OBTENEDOR: GET
+    //Lo invocamos despues de la declaracion de la clase con los animalitos
+
+
+
+    class Perro extends Animal {
+      constructor(nombre, genero, tamanio) { //EN el constructor agregamos un dato más.
+        super(nombre, genero);//super llama a constructor Animal
+        this.tamanio = tamanio;// agregamos un dato más ya que tamanio no esta en Animal
+      }
+    }
+    const negrito = new Animal("Negrito", "Macho");
+    const agata = new Animal("Agata", "Hembra");
+    const falkor = new Perro("Falkor", "Macho", "Chiquito");
+
+
+    //Invoquemoslos!!!
+    console.log(negrito);
+    console.log(agata)
+
+    //invocacion del OBTENEDOR  
+    negrito.setRaza = "Callejero"// declaro como propiedad
+    console.log(negrito.raza)
+
+
+
+    //Se puede evidenciar que hereda los datos y el constructor creados.
+
+    //Invocacion de los saludos
+    negrito.saludar();
+    agata.saludar();
+
+    //Invocacion y resultado de la nueva variable falkor con su herencia.
+
+    console.log(falkor);
+    /*Perro {
+nombre: 'Falkor',
+genero: 'Macho',
+__proto__: { constructor: ƒ Perro() }
+}*/
+
+
+  </script>
+</body>
+
+</html>

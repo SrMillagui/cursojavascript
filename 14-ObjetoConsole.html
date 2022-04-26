@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objeto console</title>
+
+</head>
+
+<body>
+  <h1><b> Objeto Cosola</b></h1>
+  <p>La palabra console es un objeto el cual por si mismo invicandolo(console.log(console)) ya nos imprime muchas cosas,
+    propiedades, memory, info, log, etc.
+  </p>
+  <h2><b>Veamos como se aplica esto en JS</b></h2>
+  <script>
+    console.log(console);
+    console.log(error);
+
+
+    //Todosestos ejemplos iran a imprimirse en la consola
+
+    console.log("Texto cualquiera")//Puede aparecer cualquier texto
+    console.error("La pifiaste mal");//Aparecera en rojo el texto del error con el texto declarado 
+    console.warn("Esto es un aviso") //Aparecera resaltado el aviso declarado
+    console.info("Texto informativo")
+
+    //Veamos crear una variable let para colocar nombre, apellido,edad en tres variables difrentes para hacer el siguiente ejemplo.
+
+    let nombre = "Yoyo";
+    let apellido = "Strong";
+    let edad = 21;
+
+    console.log(nombre)
+    console.log(nombre, apellido, edad);
+    console.log(`Hola mi nombre es ${nombre} y mi apellido es ${apellido}, tengo ${edad} años de edad`)
+
+    //Ahora veremos usar comodinde para escribir de otra foirma la misma concadenación de texto. %s para texto, %d para número.
+    console.log(`Hola mi nombre es %s y mi apellido es %s, tengo %d años de edad`, nombre, apellido, edad) // Al final las variables
+
+    //console.clrear();// limpia todo el texto de la consola. 	
+
+    console.log(document);//Nos da el codigo escrito
+
+    //Ahora tratemos de que este documento lo podramos analizar para saber en detalle todos los atribusto, metodos y caracteristicas que tiene JS.
+    console.dir(document)
+    console.clear();
+    //Ahora veremos crear un texto que expanda mas texto en forma de menu desplegable
+
+    console.group("Menu del día"); //Si declaramos como groupCollapsed nos pondra el desplegador con un triangulito.
+    console.log("Pollo");
+    console.log("Piza");
+    console.log("Ensalada");
+    console.log("Bife de carne");
+    console.log("Arroz con queso");
+    console.groupEnd();
+
+    //Ahora veremos que se vea como una tabla cada uno de los textos de la consola.
+    console.table(Object.entries(console));
+
+    //lo mismo pero ordenado alfabeticamente
+    console.table(Object.entries(console).sort());
+
+    //Ahora veamos como aplicar organizar en tabla a un arreglo
+
+    const numeros = [1, 2, 3, 4, 5, 6];
+    alfabeto = ["a", "b", "c", "d", "e"];
+
+    console.table(numeros);
+    console.table(alfabeto)
+    //Nos imprime en la consola
+    /*
+           | (index) | Values |
+              --------------------
+    | 0 | 1 |
+    | 1 | 2 |
+    | 2 | 3 |
+    | 3 | 4 |
+    | 4 | 5 |
+    | 5 | 6 |
+    
+    | (index) | Values |
+                --------------------
+    | 0 | 'a' |
+    | 1 | 'b' |
+    | 2 | 'c' |
+    | 3 | 'd' |
+    | 4 | 'e' |  */
+
+    //Ahora veremos aplicar lo mismo pero a objetos
+    const menu = {
+      desayuno: "Pan con leche",
+      almuerzo: "Pollo con arroz",
+      cena: "Asado"
+    }
+
+    console.table(menu);
+
+    //Nos Imprimira
+
+    /*
+    
+    | (index)  |      Values       |
+    --------------------------------
+    | desayuno |  'Pan con leche'  |
+    | almuerzo | 'Pollo con arroz' |
+    |   cena   |      'Asado'      |
+    */
+    // Console Time y console timeEnd
+
+    //Ahora veremos cuanto tiempo tarda mi codigo
+    console.time("Duración del código"); ///Coloco la etiqueta 
+    const arreglo = Array(1000000);
+
+    for (let i = 0; i < array.length; i++) { //defino el bucle hasta llegar al millon
+      arreglo[i] = i;
+    }
+    console.timeEnd("Duración del código")// este console es para finalizar el conteo. Debe tener la misma etiqueta
+
+    //Ahora veremos un contador para ver cuantas veces se imprimio ese codigo y un contador
+    for (let i = 0; i <= 100; i++) {
+      console.count("codi for");
+      console.log(i);
+    }
+
+
+    //Sabemos que tenemos librerias para hacer pruebas. Ahora veremos algo muy similar.
+    //Verificaremos si se realizo correctamente el calculo. Se ejecutara el texto al cumplirse lo que el console.assert contenga.
+
+    let x = 3;
+    y = 2;
+    pruebaXy = ("Se eespera que x siempre sea menor que y");
+    console.assert(x < y(x, y, pruebaXy));
+
+
+  </script>
+</body>
+
+</html>

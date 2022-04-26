@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calses y Herencias</title>
+</head>
+
+<body>
+  <h1><b> </b></h1>
+  <p>Anteriormente dimos herencia y prototipos y su desarrollo para lograr herencias de padre a hijo. Ahora veremos como
+    se realiza esto en clases, de que se trata y porque esta forma de realización es más sensilla. Algo a considerar es
+    que JS a pesar de que usemos clases lo va a compilar como prototipo.</p>.
+  <h2><b>Ahora veamos como se realiza esto en JS</b></h2>
+  <p>Pasaremos la funcion contructora anterior como base para esta parte.</p>
+  <script>
+    //Pegamos la función contructora anterior
+    //Cambiamos la palbra function por class, las clases no reciben parametros. Se usa un metodo que se llama constructor. Tambien cambiaremos los datos por unos nuevos.
+    class Animal {
+      //el cosntructor se utiliza al desarrollar una clase.
+      constructor(nombre, genero) {
+        //Atributos:
+        this.nombre = nombre;
+        this.genero = genero;
+      }
+
+      // Agrgado de metodos para class
+      sonar() {
+        console.log("Hola soy un Perro ladro");
+      }
+      ladrar() {
+        console.log("Guauu, Guauu");
+      }
+    }
+
+    //Antes agregamos algo nuevo, la  clase Perro y usamos extends para heredar los datos de Animal
+    class Perro extends Animal {
+      constructor(nombre, genero, tamanio) { //EN el constructor agregamos un dato más.
+        super(nombre, genero);//super llama a constructor Animal
+        this.tamanio = tamanio;// agregamos un dato más ya que tamanio no esta en Animal
+      }
+    }
+    const negrito = new Animal("Negrito", "Macho");
+    const agata = new Animal("Agata", "Hembra");
+    const falkor = new Perro("Falkor", "Macho", "Chiquito"); //Agrego un perro con los datos a rrellenar con la estructura del constructor Perro que heredo de Animal. En otras palabras Uso como plantilla a perro y Animal.
+    //Invoquemoslos!!!
+    console.log(negrito);
+    console.log(agata)
+
+    //Nos imprime
+    /* Animal {
+  nombre: 'Negrito',
+  genero: 'Macho',
+  __proto__: {
+    constructor: ƒ Animal(),
+    saludo: ƒ saludo(),
+    saludar: ƒ saludar()
+  }
+}
+Animal {
+  nombre: 'Agata',
+  genero: 'Hembra',
+  __proto__: {
+    constructor: ƒ Animal(),
+    saludo: ƒ saludo(),
+    saludar: ƒ saludar()
+  }
+}*/
+
+    //Se puede evidenciar que hereda los datos y el constructor creados.
+
+    //Invocacion de los saludos
+    negrito.saludar();
+    agata.saludar();
+
+    //Invocacion y resultado de la nueva variable falkor con su herencia.
+
+    console.log(falkor);
+    /*Perro {
+  nombre: 'Falkor',
+  genero: 'Macho',
+  __proto__: { constructor: ƒ Perro() }
+}*/
+
+
+  </script>
+</body>
+
+</html>
