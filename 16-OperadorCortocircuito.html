@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operador de Cortocircuito</title>
+</head>
+
+<body>
+  <h1><b>Operador de Cortocircuito</b></h1>
+  <h2><b> OR</b></h2>
+  <p>Es cuando el valor que viene por defecto osea el de la izquierda da (true).
+
+  </p>
+
+  <h2><b> AND </b></h2>
+  <P>Es cuando el valor que viene por defecto osea el de la izquierda da (false).
+  </P>
+  <script>
+    /*function saludar(nombre = "Anonimo", apellido = "Desconocido"){
+       console.log(`Hola ${nombre} ${apellido}`)
+     }
+   
+   saludar("Roberto", "Gutierrez")
+   saludar()*/
+
+    function saludar(nombre, apellido) {
+      nombre = nombre || "Desconocido",  //USamos OR, es un cortocircuito
+        apellido = apellido || "Kun"  //USamos OR
+      console.log(`Hola ${nombre} ${apellido}`)
+    }
+
+    saludar("Roberto", "Gutierrez")
+    saludar()
+    //Cuando hay dos condiciones usando or o and identificamos un cortocircuito.
+    //Siempre que de true aplicará el valor de la IZQUIERDA, al ser false aplicará el valor de la DERECHA.
+    //Ejemplos
+    //Corto con or
+    /* TRUE:  número, string, [ ], { }, true, numeros negativos.
+    
+    FALSE:   NUL, Undefine, " ", false, 0.*/
+
+    //Corto con AND:
+
+    //Sera todo lo contrario a OR.
+
+    console.log("cadena" || 23); //Entregará "cadena"
+    console.log("cadena" && 23)  //ENtregará 23
+
+    //pODRIAMOS USAR CON REAK AL USO DE LAS LIBRERIAS.
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alert, Confirm y Prompt</title>
+</head>
+
+<body>
+  <h1><b>Alert, Confirm y Prompt</b></h1>
+  <P></P>
+
+  <H2><B> </B></H2>
+
+
+  <script>
+
+    /*console.log(window)*/
+
+    console.log(window.alert("Hola esto es una alerta"))// tiene boton de aceptar
+    console.log(window.confirm("Hola esto es una confirmacion"))// Tiene dos botones uno aceptar otro cancelar, uno es true el otro false.
+
+    console.log(window.prompt("Hola esto es un aviso"))// Tiene boton aceptar, puede escribir un valor en el cartel. Se va aguardar en la variable donde se va a almacenar si elusuario escribe algo y da aceptar. Se da cancelar se vuelve NULL.
+
+    //Estos son objetos que cuelgan de el objeto global  windows
+//Pero pueden ser ivocados sin cenesidad de colocar console.log y window.
+//Ejemplo:    prompt("Hola esto es una aviso"))
+
+//Alerta: Al aceptar dara UNDEFINE
+//Confirmacion: Si se pareta aceptar da TRUE, cancelar da FALSE.
+//Prompt: Salta un cartel introsivo, si doy aceptar dara TRUE y si escribo algo se guardara en la consola. Pero si doy cancelar dara NULL
+
+  </script>
+</body>
+
+</html>
