@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expresiones Regulares</title>
+</head>
+
+<body>
+  <h1><b>Expreciones Regulares</b></h1>
+  <p> Secuencia de caracteres que forma un patron de búsqueda, gerelmente usado en búsqueda de cadenas de textos. Se
+    puede usar para validar documentos de identidad por ejemplolos numeros de DNI. Recomendable repasar en MDN, stack
+    overflow, donde se ueda ver en detalle o buscar si ya se desarrolló una expresion regular por parte de otro
+    programador.</p>
+
+  <h2b><b>Veamos como se define una Expreción Regular en JS</b></h2b>
+
+  <script>
+    // Primero pondremos untexto en una variable, luego crearemos la exprecion para buscar en ese texto la palabra.......
+
+    let cadena = ">Pablito clavó un clabito, que clavito clavó Pablito" //Coloque el texto donde buscaremos una palabra
+
+    //Veremos dos formas de buscar un texto que queramos en la variante cadena.
+
+    //FORMA 1:
+    let expresionReg = newRegExp("Pablito", ""); // Entre parentesis coloque la palabra a buscar Pablito y la bandera que indicara algo específico, la bandera es una seleccionada de la lista de expresiones regulares que podemos buscar en MDN, Google, etc.
+    //Las banderas se ponen en la segundas comillas
+    //FORMA 2:
+    let expresionReg2 = /Pablito/;   //Vemos que coloque el texto que busco entre (/ /) y se muestra en color rojo. Las banderas se ponen por último.
+
+    // Ahora veremos como invocar la accion de busqueda con los console.log , hay diferentes maneras y veremos una por una.
+    //TEST:  Revisa si esta la palbra que buscamos (Pablito) y devuelve  true o false.
+
+    //EXEC: Si encuentra la palbra da datos como posición del caracter, texto ,etc. sobre la palabra encontrada.
+    console.log(expresionReg.test(cadena));
+    console.log(expresionReg.exec(cadena));
+
+    //Pureba distintas banderas en el constructorde (neRegExp), por ejemplo colocar "i" entre las comillas considerara minusculas y mayusculas, "g" tomara más de un datos que busques imprimiendo el último encontrado con todos sus datso de posición y renglón donde se encontró.
+  
+    //Uso de COMODINES:
+
+    //Se colocan en donde pusimos el texto a buscar. Ejemplo: let expresionReg2 = /[1-5]/  Buscala presencia del número 1 al 5.   let expresionReg2 = /Pablito{1,2}/; Busca la palabra que aparezca una y dos veces, si es asi dará true.  
+  </script>
+
+</body>
+
+</html>

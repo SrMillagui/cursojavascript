@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funciones Anonimas Autoejecutables</title>
+</head>
+
+<body>
+  <h1><b>Funciones Anonimas Autoejecutables</b></h1>
+  <p>Es una función que engloba todo el código que quieres ejecutar, pueden compartir nombres en sus propiedades entre
+    si ya que no entran en conflicto. No tienen nombre, esta protegido de efectos secundarios de otros archivos, etc.
+    Permite pasar parametros de una manera más amigable. Veamos el ejemplo de Jquery en www.cdnjs.com. Las funciones
+    anonimas
+    autoejecutables nos permiten pasar parametros y utilizar alias dentro del cuerpo de la función.</p>
+
+  <h2><b>Veamos como se realiza esto en JS </b></h2>
+
+
+  <script>
+    (function () {  //Declaracion de funcionanonima entre parentesis
+
+    })();  //Este parentesis es donde estcribiremos los que haremos.
+
+    //Veamos un segundo ejemplo con el mismo formato.
+
+    (function (d, w, c) { // Establecemos los parámetros d,w,c
+      console.log("a,s,d,f,g,h")
+      console.log(d);
+      console.log(w);
+      console.log(c);
+    })(document, window, console);  //Colocamos los segundos parámetros de donde  recibira los paámetros
+
+    //Ahora veamos las 4 formas de crear esta funcionanonima autoejecutable
+
+    //N1
+    (function () {
+      console.log("version Clasica")
+    })();
+
+    //N2
+    ((function () {
+      console.log("version Crockfor")
+    })());
+
+    //N3
+    +function () {
+      console.log("version Unaria")
+    }();
+
+    //N4
+    !function () {
+      console.log("version Facebook")
+    }();
+
+  </script>
+</body>
+
+</html>
