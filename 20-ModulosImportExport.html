@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulos</title>
+</head>
+
+<body>
+  <h1><b>Módulos/Import/Export</b></h1>
+  <p>Esta vez comenzaremos con recomendaciones en el codigo de JS, primero es recomendable escribirlo a lo ultimo,
+    justoantes de finalizar el bloque de body,. Es importante que esta lección la estudies junto con los archivos JS
+    dentro de la carpeta JS. Estas carpetas son aritmetica.js, constantes.js, modulos.js, no-modulos.js</p>
+
+  <h2><b>Comencemos creando un script donde invoquemos usando SCR a un archivo JS que hayamos creado denombre modulos
+      dentro de una carpeta que se llame js, las carpetas es recomendable poner nombre faciles y cortos como este.</b>
+  </h2>
+
+  <script src="js/modulos.js" type="module">
+    //invocamos el archivo modulos y usamos el type module para que pueda funcionar.
+  </script>
+  <script src="js/no-modulos.js" nomodule>
+   //creamos este archi js y lo invocamos para dar aviso de no soporte de explorel   y coloco nomodule que es un buleano que aplicara segun si  lo tiene aplica sino no aplica. Quiere decir que si lee explorel no aparecera, si no soporta explorel si aparecera el archivo no-modulos con su respectivo texto.
+  </script>
+</body>
+
+</html>
