@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asincronia en Javascript</title>
+</head>
+
+<body>
+  <h1><b>Asincronia en Javascript</b></h1>
+  <p>Crearemos una call donde pondremos un console.log que se ejecutará en 1 segundo lo que equivale a 1000
+    milisegundos.</p>
+
+  <script>
+    /*setTimeout(() => {
+      console.log("Pasó un segundo y saludo yo") //Esto se ejecuta una sola vez.
+    }, 1000);
+
+    //Ahora probaremos que se repita este mensaje una y otra vez con el set interval.
+
+    setInterval(() => {
+      console.log("Pasó un segundo y saludo Interval indefinidamente"); //Esto se ejecuta varias veces indefinidamente.
+    }, 1000);
+
+    //Ahora veremos que se imprima la hora indefenidiamente.
+
+    setInterval(() => {
+      console.log(new Date().toLocaleTimeString) //Esto se ejecuta la hora exacta e imprime por segundo.
+    }, 1000); */
+
+    //Ahora veremos como parar esto temporizadores
+
+    //Veremos como funciona esto en un TIMEOUT
+    //para esto se deve crearlo en una vairiable con su nombre y usar  al finalizar CLEARTIMEOUT.
+
+    let temporizador = setTimeout(() => {
+      console.log(new Date().toLocaleTimeString());
+    }, 1000);
+
+    clearTimeout(temporizador);
+    console.log("Aparezco despues del clear"); //coloco esto para ver nada mas que se ejecutó el clear.
+
+    //Lo mismo funcionaria con el setInterval y el clearInterval.
+
+  </script>
+
+</body>
+
+</html>

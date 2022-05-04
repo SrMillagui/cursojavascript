@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callbacks</title>
+</head>
+
+<body>
+  <h1><b>Callbacks</b></h1>
+  <p>Es una función que se va ejecutar despues que otra se haga ejecutado. Las funciones son ciudadanos de primer orden
+    ya que se puede hacer de todo. EL Callbacks es el primer mecanismo que usa JS para trabajar con una asincronia.
+  </p>
+
+  <h2><b>Ahora veremos como se realiza una callback en JS</b></h2>
+
+  <script>
+    //Crearemos una función que elevará un número al cuadrado.
+
+    //Definimos la función
+    function cuadradoCallback(value, callback) { //recibira un valor value y una función a ejecutar callback.
+      setTimeout(() => {  //SetTimeout po usamos para simular el callback
+        callback(value, value * value);  //Invocacmos el callback, recibe valor value y la función a ejecutar sera multplicarse por si misma.
+      }, 0 | Math.random() * 100); //Temporizador a 0 o dar un random entre 0 o 1  y multiplicar a 100 para que de centecimas de segundo. Es cuanto tardara en realizar le función
+    }
+
+    //Ejecutamos la función
+    cuadradoCallback(0, (value, result) => {  // Recibe valor 0, (valor y resultado de la elevacion al cuadrado)
+      console.log("Inicia Callback");
+      console.log(`EL resultado de ${value}, al cuadrado es ${result}.`);
+
+      cuadradoCallback(2, (value, result) => {
+        console.log(`EL resultado de ${value}, al cuadrado es ${result}.`);
+      });
+    });
+// El callback nos permite regular por ejemplo cuando se etste cargando una pagina no se puede interactuar hasta que se cargue toda la pagina.
+//En caso de tener que usarlo en una situación que necesitemos tener muchos llamados y reacciones no es recomendable usar callbacks. Pera ello se utiliza las promesas, generadores y funciones asincronas.
+//Mas información en callbackhell.com
+  </script>
+</body>
+
+</html>

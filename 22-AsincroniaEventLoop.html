@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asincronia</title>
+
+</head>
+
+<body>
+  <h1><b>Asincronia</b></h1>
+  <p>Esto es fundamental entender ya que JS solamente puede ejecutar una cosa a la vez, tampoco se puede ejecutar lineas
+    largas. Por ejemplo al solicitar información a una API, si se demora puede bloquearse el hilo principal. La
+    asincronia permite realizar largas solicitudes de red sin bloquear el hilo principal. JS fue diseñado para ser
+    ejecutado en navegadores, trabajar con peticiones hacia la red, y procesar las interacciones con el usuario,
+    tratando de mantener una interfase fluida. Trabaja bajo un modulo asincrono no bloqueante utilizando un solo hilo
+    SINGLE TREAD.
+  </p>
+
+  <H2>Veremos los siguiente temas</H2>
+  <ol>
+    <li><b> Single thread y Multi Thread:</b></li>
+    <p>Al iniciar un procesador comenzamos de hecho a trabajar con uno o mas hilos que se ejecutan, el single thread
+      significa un solo hilo, multi thread significa multimples hilos. Obsrvemos ahora las siguientes imagenes.</p>
+    <p><a href="https://miro.medium.com/max/572/1*1zNMKZB4Tuoy68x9MoCl8A.png"></a></p>
+
+    <p><a href="https://aprendiendo-nodejs.blogspot.com/2017/07/entendiendo-el-event-loop.html"></a></p>
+    <p>Existe algo que se llama call Stack, puede ser sincrona o asincrona, va aplilando las tareas. La forma de
+      trabajar de JS es LIFO,, la última en entrar es la última en salir.</p>
+    <li><b>Operaciones de CPU y Operaciones de entrada o salida input/aoutput I/O:</b></li>
+    <p>CPU, son aquellas que van estar consumiendo los procesos de nuestra CPU. I/O son aquellas operaciones que van a
+      estar esperando la peticion la mayor parte del tiempo.</p>
+    <li><b>Concurrentes o paralelismo</b>:</li>
+    <p>Concurrencia es cuando dos o más tareas progresan simultaneamente primero una y despues la otra. EN cambio
+      paralelismo es cuando progresan al mismo tiempo.</p>
+    <li><b>Bloqueante y no bloqueante:</b></li>
+    <p>Se refiere a como se tomará la fase de espera. Bloqueante no devuelve el control a la aplicación hasta que haya
+      terminado toda su tarea. No bloqueantes se ejecutan y devuelven el control al hilo principal inmediatamente.</p>
+    <li><b>Operaciones síncronas o asíncronas:</b></li>
+    <p>Se refiere a cuando se realiza la respuesta. Síncrono es cuando es inmediato, asincrona sucede en un futuro,
+      devuelve el control al hilo principal</p>
+  </ol>
+
+  <p>EN Javascript tendremos dos tipos de código:</p>
+  <ol>
+    <li>Código Sincrono bloqueante</li>
+    <li>Código Asincrono No bloqueante</li>
+    <li>COn single Thread</li>
+    <li>En la mayoria de los casos con entreda y salida I/O.</li>
+  </ol>
+
+  <h2>Veamos como se aplica esto en JS</h2>
+
+  <script>
+    //Función anonima autoejecutable
+    //Escribiremos un código Síncrono bloqueante
+
+    (() => {
+      console.log("Codigo Síncrono");
+      console.log("INICIO"); //Toma control console.log del hilo
+
+      function dos() {  //Funciones declaradas Dos,Uno,Tres, al ser declaradas quedan en la memoria y se dirije al siguiente console.log del final.
+        console.log("Dos");
+
+      }
+
+      function uno() {
+        console.log("Uno");
+        dos();
+        console.log("Tres");
+      }
+
+      uno(); //Invoca a la funcion uno que este invoca a Dos y entrega console.log Tres y libera el hilo al siguiente console.log.
+      console.log("Final");
+    })();
+
+    /* Resultado
+    Codigo Síncrono 22-AsincroniaEventLoop.html:61:15
+  INICIO
+   Uno
+   Dos
+  Tres
+   Final
+   */
+
+
+    //Código Asincrono No bloqueante
+    (() => {
+      console.log("Código Asincrono"); //Se imprime los console.log primero, luego las funciones temporalizadas
+      console.log("INICIO");
+
+      function dos() {
+        setTimeout(function () {
+          console.log("Dos");
+        }, 1000)
+      }
+
+      function uno() {
+        setTimeout(function () {
+          console.log("Uno");
+        }, 0)
+        dos();
+        console.log("Tres")
+      }
+      uno();
+      console.log("Finale")
+
+    })();
+
+    //Podemos poner de ejemplo a un loader de página, mientras no cargue totalmente la página no se va a poder interactuar con esta.
+
+    /*Imprime
+Primero las bloqueantes console.log y luego las no bloqueantes function temporalizadas.
+    Código Asincrono
+    Inicio
+    Tres
+    Finale
+    Uno
+    Dos*/
+
+  </script>
+
+
+</body>
+
+</html>

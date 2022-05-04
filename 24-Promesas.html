@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promesas</title>
+</head>
+
+<body>
+  <h1>Promesas</h1>
+  <p>Funciona como un if else, si se cumple la promesa esta se concretará, sino no.</p>
+
+  <script>
+    //Reulizamos el callback anterior creado en la leccion 23 callbacks. Modificamos su nombre y borramosel callback, agregamos el return con una arrow function o una funcion anonima
+    //. Agregamos el resolve que devolvera al ser positivo.
+    function cuadradoPromise(value) {
+      if (typeof value !== "number") {  //Agrego de llaves opcional
+        return Promise.reject(`Error!. EL valor ${value} no es un número`); // Typeof es tipo de,  declarado esta si no es un número de error. Reject rechaza la promesa
+      }
+      return new Promise((resolve, reject) => {
+        setTimeout(() => { //Simulamos la asincronia con setTimeout.
+          resolve({   //Creo objeto
+            value,  //Pongo solamente una vez si el valor es igual, en este caso es valu:value
+            result: value * value// se multiplicara al realizarse por si mismo.
+          });
+        }, 0 | Math.random() * 100);
+      });
+    }
+
+    //Ejecutamos la función
+    /*Tenemos dos metodos para manejar la asincronia 
+    El then: Que se ejecutara una ve se cumpla la función. Podemos usar todos los quenecesitemos, luego se usa catch que es el que capturará el herror resultante que estara en el reject */
+    cuadradoPromise(0)
+      .then((obj) => { //Aqui tomara los datos de resolve, el cal es un objeto, asi lo tomará nuestra declaración.Colocar punto antes de declarar.
+        /* console.log(obj)*/
+
+        //Veremos invocarlo de otra forma.
+        console.log("VEAMOS LA PROMESA 0");
+        console.log(`Te prometo que ${obj.value} multiplicado por si mismo es ${obj.result}.`)
+        return cuadradoPromise(1); //Declaramos este retunr para que sea tomado por el siguiente console.log con los parametros OBJ y VALUE
+      })
+      .then((obj) => {
+        console.log("VEAMOS LA PROMESA 1");
+        console.log(`Te prometo que ${obj.value} multiplicado por si mismo es ${obj.result}.`)
+        return cuadradoPromise(2);
+      })
+      .then((obj) => {
+        console.log("VEAMOS LA PROMESA 2");
+        console.log(`Te prometo que ${obj.value} multiplicado por si mismo es ${obj.result}.`)
+        return cuadradoPromise(3);
+      })
+      .then((obj) => {
+        console.log("VEAMOS LA PROMESA 3");
+        console.log(`Te prometo que ${obj.value} multiplicado por si mismo es ${obj.result}.`)
+        return cuadradoPromise(4);
+      })
+      .then((obj) => {
+        console.log("VEAMOS LA PROMESA 4");
+        console.log(`Te prometo que ${obj.value} multiplicado por si mismo es ${obj.result}.`)
+        console.log("Fin de la promesa!");
+      })
+
+
+
+      .cathc(err => console.error(err));// Dara error en color rojo, leera el if typeof declarados arriba.
+      /*Imprimira todos menos donde da el error y avisará con el mensage en rojo personalizado.*/
+
+  </script>
+</body>
+
+
+
+
+</html>
