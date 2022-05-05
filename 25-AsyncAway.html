@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funciones Asincronas</title>
+</head>
+
+<body>
+  <h1><b>Se ejecutan recien cuando se cumple el proceso que se está trabajando. Trabajan en conjunto con las
+      promesas.</b></h1>
+
+  <h2><b>Veamos como se utiliza en JS</b></h2>
+  <script>
+    //Reutlizamos la funcion creada en la clase 24-Promesas.
+    //Declaremos la función
+
+    function cuadradoPromise(value) {
+      if (typeof value !== "number") {
+        return Promise.reject(`Error!. EL valor ${value} no es un número`);
+      }
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({
+            value,
+            result: value * value
+          });
+        }, 0 | Math.random() * 100);
+      });
+    }
+
+    //Declararemos una función Asincrona
+    async function funcionAsincronaDeclarada() { //async declara asincronica la función.
+      try {
+        let obj = await cuadradoPromise(0); //colocamos await para que imprima su valor y luego el console.log, sino no imprimra el valor
+        console.log(`Asing Function: ${obj.value}, ${obj.result}.`)
+        //ahora podemos declarar el objeto cuadradoPomise con diferentes valores y luego declarar el console.log para que lo muestre.
+        obj = await cuadradoPromise(1);
+        console.log(`Asing Function: ${obj.value}, ${obj.result}.`);
+        obj = await cuadradoPromise(2);
+        console.log(`Asing Function: ${obj.value}, ${obj.result}.`);
+        obj = await cuadradoPromise(3);
+        console.log(`Asing Function: ${obj.value}, ${obj.result}.`);
+        obj = await cuadradoPromise(4);
+        console.log(`Asing Function: ${obj.value}, ${obj.result}.`)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+
+    //Ejecutemos esta Función
+
+    funcionAsincronaDeclarada(); //Al declarar en este momento coloca undefined en todos lados. Aui se aplica que primero se imprimirá los bloqueantes console.log y no permite que se imprima el resultado de la variable. Para solucionarlo usaremos await en el nombre de la variable para que espere el resultado
+
+
+    //Ahora veremos la misma función pero expresada
+    //Creamos una variable con una funcion dentro usando arrow function. Colocamos la palbra async antes del parentesis para volverla asincronica.
+
+    const funcionAsincronaExpresada = async () => {
+
+      try {
+        let obj = await cuadradoPromise(5); //colocamos await para que imprima su valor y luego el console.log, sino no imprimra el valor
+        console.log(`Asing Function: ${obj.value}, ${obj.result}.`)
+        //ahora podemos declarar el objeto cuadradoPomise con diferentes valores y luego declarar el console.log para que lo muestre.
+        obj = await cuadradoPromise(6);
+        console.log(`Asing Function: ${obj.value}, ${obj.result}.`);
+        obj = await cuadradoPromise(7);
+        console.log(`Asing Function: ${obj.value}, ${obj.result}.`);
+        obj = await cuadradoPromise(8);
+        console.log(`Asing Function: ${obj.value}, ${obj.result}.`);
+        obj = await cuadradoPromise(9);
+        console.log(`Asing Function: ${obj.value}, ${obj.result}.`)
+      } catch (error) {
+        console.error(error);
+      }
+
+    }
+
+    funcionAsincronaExpresada();
+
+    /*Comentarios:
+   Usamos async para poder usar await.*/
+  </script>
+
+</body>
+
+</html>
