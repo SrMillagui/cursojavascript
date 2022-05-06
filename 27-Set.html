@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dato Set</title>
+</head>
+
+<body>
+  <h1><b>Set</b></h1>
+  <p>Es una estructura similar a un arreglo (array) pero con datos únicos. SOlo acepta valores únicos. O sea no
+    imprimirá si se repite el mismo texto o número.</p>
+
+  <script>
+    //Como se crea un set.
+
+    const set = new Set([1, 2, 2, 3, 4, 5, {}, {}, true, false, "Hola"]);//Presta atencion al uso de llaves y en la impreción no aparecerá el nímero 2 ya  que esta repetido.
+    console.log(set);// Muestra toda la lista
+    console.log(set.size);// muestra la cantidad de items en la lista*/
+
+    //Otra forma de crear un set
+
+    const set2 = new Set();//Se usa parentesis bacio ya que se desarrollará después.
+    set2.add(1);
+    set2.add(2);
+    set2.add(3);
+    set2.add(3);// Repito apropósito el 3
+    set2.add({});
+    set2.add(true);
+    set2.add(false);
+    set2.add("Holaaa");
+
+    console.log(set2);// Muestra toda la lista
+    console.log(set2.size);// muestra la cantidad de items en la lista*/
+
+    //Veremos como se puede recorrer el set de varias formas
+    //Utilizaremos for
+
+    console.log("RECORRIENDO SET")
+    for (item of set) {  //imprime el item de set
+      console.log(item);
+    }
+    console.log("RECORRIENDO SET2")
+    set2.forEach(item => console.log((item)));
+
+    //Hasta ahora set no es un arreglo por lo que para convertirlo en arreglo para poder invocarlo en fragmentos por ejemplo urilizaremos esta formula. Para esto devemos guardar en una variable a (set) sino imprimiría item is undefined.
+    //Usaremos Array.from para convertirlo en array.
+    let arr = (Array.from(set)); // arr tiene formado un array de set.
+    console.log(arr); //Invoco a arr
+
+    //Ahora si podremos ver las distintas posiciones
+    console.log(arr[0])
+    //Forma de borrar algo en el set:
+    /* set.delete("Hola");*/
+
+//Forma de buscar un dato en el set:
+    /*console.log(set.has("Hola"));*/
+
+//Para limpiar un set:
+//set.clear(); //Ponemos el nombre del set luego clear.
+
+
+  </script>
+</body>
+
+</html>

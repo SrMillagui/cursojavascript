@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simbols</title>
+</head>
+
+<body>
+  <h1><b>Simbols</b></h1>
+  <h2><b>Nuevos tipos de datos</b></h2>
+  <p>Comenzaremos a ver nuevos tipos de datos que se integran a partir del 2015. Para esto esto tendremos habiliatada
+    la consola con su respectivo go live para poder ir revisando los cambios cada vez que guardamos.
+    Un simbolo mantine su valor privado, y para uso interno. Generalmente su caracteristica es de objeto. No podemos
+    usar el ioperador new, usaremos funcion contructora symbol, symbol nos permite crear identificadores de referencia .
+  </p>
+  <h2><b>Veamos como se aplica en JS</b></h2>
+  <script>
+    //Crearemos un simbolo creando una variable sin usar el new delante de symbol.
+
+    let id1 = Symbol(); //Acepta numero o cadena de texto en el parentesis lo llama (descripción). Es como poner una etiqueta.
+    let id2 = Symbol();
+
+    console.log(id1 === id2);
+    //Nos imprimira false, se ve que trata cada simbolo como unico y capas de hacer comparaciones entre si.
+
+    //Los simbolos se usan para evitar sobreescribir propiedades.  El simbolo declara como propiedad privada del objeto.
+
+    //Como se agrega un simbolo a un objeto?. Se crea con una constante. Como buena costumbre la escribimos con mayuscula.
+
+    const NOMBRE = Symbol(); //Creo el simbolo. Para etiquetarlos como uso de refrerencia podenomos lo que queramos en los parentesis ""
+    const SALUDAR = Symbol();//Creo segundo simbolo para provar otro console.log
+
+    const persona = { //declaro este objeto para utilizar el simbolo 
+      [NOMBRE]: "Roberto" //Utilizamos los corchetes para la propiedad del objeto.
+    }
+    // creamos una propiedad persona.NOMBRE y al imprimir veremos que sucede
+
+    persona.NOMBRE = "Roberto Yoyo"
+    console.log(persona);
+
+    /* Nos imprime
+    Object { NOMBRE: "Roberto Yoyo", Symbol(): "Roberto" }
+
+NOMBRE: "Roberto Yoyo"
+
+Symbol(): "Roberto"
+
+<prototype>: Object { … }*/
+
+    //Mantiene la propiedad del symbol NOMBRE Roberto por lo que se ve que no es afectado.
+
+    /* Veremos las difrerencias de invocación.
+  
+    console.log(persona.NOMBRE);  Imprimirá "Roberto Yoyo".
+  
+    console.log(persona[NOMBRE]); Imprimirá Roberto.  Basicamente invola solamente el simbolo*/
+
+    //LA ultización de symbol se considera como privadas ya que se muestran como simbolo sin declararse como NOMBRE como se usó en este caso
+
+    //Utilizaremos otro simbolo SALUDAR y veremos su invocacion con parentesis pero antes sera declarado como funcion para poder usarlo en el ejmplo.
+    persona[SALUDAR] = function () {
+      console.log("Hola")
+    }
+    persona[SALUDAR]();  //Nos entrega el Hola
+    console.log(persona);
+    console.log(persona.NOMBRE);
+
+
+    //Veamos otro ejemplo
+
+    propiedad = NOMBRE; //Defino ropiedad con su contenido NOMBRE.
+
+    //Voy a recorrer las propiedades dentro del objeto persona
+    for (let propiedad in persona); {
+      console.log(propiedad);
+
+    }
+
+    console.log(Object.getOwnPropertySymbols(persona));// De esta forma podremos imprimir los objetos privados  dentro de persona que no figuran en los anteriores console.log();
+  </script>
+</body>
+
+</html>
