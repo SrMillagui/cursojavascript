@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maps</title>
+</head>
+
+<body>
+  <h1><b>Maps</b></h1>
+  <p>
+    Son objetos que nos permiten almacenar conjunto de valores. Es mu parecido a un objeto primitivo.
+  </p>
+  <script>
+    //Se declara similar a un objeto.
+    let mapa = new Map();
+    mapa.set("Nombre", "Roberto");
+    mapa.set("Apellido", "Yoyo");
+    mapa.set("Edad", 65);
+
+    //Ahora veremos como se invoca con sus diferentes variaciones según lo qeu querramos hacer.
+    console.log(mapa); //Para mostrar su contenido.
+    console.log(mapa.size);//Muestra cantidad de elementos
+    console.log(mapa.has("Nombre"));// Busca si tiene correo
+    console.log(mapa.get("Nombre"))//Lee el contenido de lo que quiero buscar, en este caso Roberto.
+    mapa.set("Nombre", "Toto"); //Cambie el dato por otro.
+    mapa.delete("Edad");
+
+
+    console.log(mapa);
+
+    //Ahora separaremos en dos columnas, llave y valor. Debajo de cada uno pondremos los datos anteriormente escritos en el objeto.
+    for (let [key, value] of mapa) {
+      console.log(`EL key es:  ${key} y el value es: ${value}.`);
+    }
+
+    //Veamos imprimir dos valores de las distintas variaciones de un maps que permite declarar con {}, booleans,string, number.
+
+    mapa.set("Hola", "Chau");
+    mapa.set("Dos", 2);
+    mapa.set({}, {});
+
+    console.log(mapa)
+
+    //Segunda manera de declarar, Usaremos nombre como mapa2 y una constante.
+
+    const mapa2 = new Map([
+      ["Fecha", "22"],
+      ["Mes", "Cinco"],
+      [true, "Verdadero"],
+      [{}, {}],
+    ])
+    console.log(mapa2);
+
+    //Ahora los datos de mapa 2 y mapa  podes almacenar en un lugar por ejemplo solamente la comunas key y eso lo hacemos creando una variable, en este caso usaremos "const".
+
+    const Grupomapa2 = [ob]
+  </script>
+</body>
+
+</html>

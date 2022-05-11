@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weaksets y Wakmaps</title>
+</head>
+
+<body>
+  <h1><b>Weaksets y Wakmaps</b></h1>
+  <p>
+    Significa en este caso que solamente pueden al macenar referencias debiles, las llaves deben ser de tipo objeto.
+    Al ser una referencia debil le permite limpiar en la logica de la programación, osea se borran.
+    Tienen algunas carencias, no se pueden recorrer, no son iterables, no se puede usar el método clear, solamente
+    borrar de un a uno, no se puede usar el sice.
+  </p>
+
+  <h2><b>Veamos como funciona esto en JS</b></h2>
+
+  <script>
+
+    /*const set = new WeakSet([1, 2, 2, 3, 4, 5, {}, {}, true, false, "Hola"]);
+        Een este ejemplo usamos un antiguo set le cambiamos por WeakSet para que veamos que esto nos dara herror.  
+        Ahora veamos la forma correcta.*/
+
+    /*
+    
+    const ws = new WeakSet();  //parentesis bacio ya que se debe definir uno por uno.
+    
+        let valor1 = { "Soy el 1": 1 }; //Declaración como objeto
+        let valor2 = { "Soy el 2": 2 };
+        let valor3 = { "Soy el 3": 3 };
+    
+        //Asignemos los valores.
+        ws.add(valor1);
+        ws.add(valor2);
+        console.log(ws);
+    
+    
+        /*Nos imprime de forma escondida los objetos.
+        
+    WeakSet [ {…}, {…} ]
+     <entries>
+     <prototype>: WeakSet.prototype { … } */
+
+    //Veamos si tiene
+
+    //console.log(ws.has(valor1));
+
+    //Eliminemos valores
+    // ws.delete(valor2);
+
+    //setInterval(() => console.log(ws), 1000);//Impresion de mis objetos por segundo
+
+    //IMPORTANTE:
+    /* No quiero esperar que el recolector de basura elimne mis weakset, los eliminare antes, un weakset al tener uno de sus objetos en undefine o null se eliminaran todos automaticmente.
+    Para esto usaremos SETTIMEOUT configurado a ejecutarse en 5 segundos para que podamos ver con comodidad su ejecución
+    */
+    /*
+    setTimeout(() => {
+      valor1 = null;
+      valor2 = null;
+      valor3 = null;
+    }, 5000);
+    */
+
+    //Ahora veremos como se declara un WeakMap
+
+    const pancracio = new WeakMap();
+
+    let hermano1 = {}; //Con objeto bacio {}
+    let hermano2 = {};
+    let hermano3 = {};
+
+    pancracio.set(hermano1, "Lolo"); //se coloca el contenido asi. Puede ser numerico tambien
+    pancracio.set(hermano2, "Pablo");
+    console.log(pancracio);
+
+    /* Me imprime esto
+    WeakMap {{…} => 'Lolo'}[[Entries]]0: {Object => "Lolo"}[[Prototype]]: WeakMap
+    */
+
+    //Preguntemosle si tiene lo que le preguntamos con has.
+    console.log(pancracio.has(hermano1));
+    /*Importante:
+    Si no declaro en set mis referencias de las  variables hermano2 y hermano3 no se podra buscar con has e interactuar. Busco lolo da false, busco hermano2 da false, busco hemano1 da true.
+    */
+
+    //Para busca las referencias de las variables en pancracio usamos GET.
+
+    console.log(pancracio.get(hermano1));
+    console.log(pancracio.get(hermano2));
+    console.log(pancracio.get(hermano3));
+
+    /*Imprime esto
+    Lolo
+ undefined
+ undefined
+
+ Ya que solo defini hermano1, se llama lolo :D
+ */
+
+    /*Observación:
+    AL poder ser elimnadas al finalizar nuestro trabajo aumenta el rendimiento de la aplicación*/
+
+    //Declaremos los temporizadores con su eliminación al final
+
+    setInterval(() => console.log(pancracio), 1000);
+
+    setTimeout(() => {
+      hermano1 = null; //Se limina solamente si lo declaramos aqui.
+      hermano2 = null;
+      hermano3 = null;
+    }, 5000);
+  </script>
+</body>
+
+</html>
