@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proxie</title>
+</head>
+
+<body>
+  <h1><b>Proxie</b></h1>
+  <p>
+    Es un mecanismo que permite crear un objeto basado basado en un objeto literal inicial. Es como crear un modelo a
+    seguir manejador por un handler.
+
+  </p>
+
+  <h2><b> </b></h2>
+
+  <script>
+    /*
+    const persona = {
+        nombre: "",
+        apellido: "",
+        edad: 0
+      }
+  
+      const manejador = {
+        set(obj, prop, valor) {  //recibe parametro set con 3 parametros. 
+          obj[prop] = valor;
+        }
+      }
+  
+      //Iremos creando varias personas
+  /*
+      const roberto = new Proxy(persona, manejador);// recibe las dos constantes
+      /*roberto.nombre = "Roberto";
+      roberto.apellido = "Yoyo";
+      roberto.edad = 34;
+  
+      console.log(roberto);*/
+    /*    console.log(roberto);
+Proxy {
+    <target>: {…}, <handler>: {…} }
+      <target>: Object {nombre: "", apellido: "", edad: 0 }
+        <handler>: Object {set: set(obj, prop, valor) }
+
+          Vemos que al imprimir jon nos da las propiedades vacias, para poder colocar propiedades a roberto las colocamos debajo de su constante y luego el manejador declaramos que reciba el valor del objeto, osea los datos de roberto.
+          */
+
+    /*Una vez declarado est nos imprimirá.
+    
+    Proxy {nombre: 'Roberto', apellido: 'Yoyo', edad: 34}
+Luego veremos mas informacion como esta pero lo importante es que tomó los daots sin modificar nuestro primer objeto.
+[[Handler]]: Object
+[[Target]]: Object
+[[IsRevoked]]: false
+*/
+
+    //Copio y pego lo antes echo y vamos a agregar un filtro donde va a restringirs nuevos ingresos de valors en nuestro objeto base.
+
+    const persona = {
+      nombre: "",
+      apellido: "",
+      edad: 0
+    }
+
+    const manejador = {
+      set(obj, prop, valor) {
+        if (Object.keys(obj).indexOf(prop) === -1)
+          return console.error("No hay proipedad twiter en objeto principal persona");
+        //Que hicimos aca arriba?.Object.keys defragmenta en strings cada propiedad,  indexOf busca coincidencias entre las propiedades y los elementos d la propiedad principal, al no haber un twiter devolverá -1,  Esa devolución aprovechamos para usar === -1 para que nos ejecute el reurn al aparecer la devolución -1. El return nos da el texto con el herror.
+        //podriamos hacer lo mismo verificando que se use los caractares autorizados como /%$#"!%/()=*" como ejemplo usando if  y .test
+        /*if (
+          (prop === "nombre" || prop === "apellido") && !("#$%&/()=*"g.test(valor))
+        )*/
+        {
+          return console.error(`La ${prop} solo acepta estos letras y espacios en blanco`);
+        }
+        obj[prop] = valor;
+      }
+    }
+
+    //Iremos creando varias personas
+
+    const roberto = new Proxy(persona, manejador);// recibe las dos constantes
+    roberto.nombre = "Roberto";
+    roberto.apellido = "Yoyo";
+    roberto.edad = 34;
+    roberto.twiter = "@yoyo";
+
+    console.log(roberto);
+
+  </script>
+</body>
+
+</html>

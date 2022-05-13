@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iterables y Iterators</title>
+</head>
+
+<body>
+  <h1><b>Iterables y Iterators</b> </h1>
+  <h2>Iterable:</h2>
+  Elemento que es publico y se puede recorrer, por ejemplo con un for o for if, esto fue dado en la
+  clase de loops.
+  Pueden ser también las clases de loops. Arreglos, string, elementos y dom.
+  <h2>Iterador:</h2>
+  <p>Apuntador o mecanismo que recorre los elementos de la estructura de datos, ejemplo: for , for of, array.from,
+    promesas.
+    Podemos ingresar a la interfase de un interador con un metodo next. </p><br>
+  <p>EN sintesis, el iterable es lo que se va a recorrer y iterador es la acción de recorrer.</p>
+
+  <h2><b></b></h2>
+  <p>
+
+  </p>
+
+  <h2><b>Veamos como se realiza en JS</b></h2>
+
+  <script>
+
+    const iterable = [1, 2, 3, 4, 5, 6];  //Declaracion de array
+
+    const iterador = iterable[Symbol.iterator](); //declaracion de declarador, accedemos al iterator del iterable. usamos ((Symbol.iterator))
+
+    console.log(iterable);  //devuelve el array.  
+    console.log(iterador); //devuelve el array iterator bacio. Con proto.
+
+    /*Si usaramos texto "strin" devolveria string y funcionaria igual.*/
+
+
+    //Ahora veremos como trabaja next
+
+    console.log(iterador.next()); //Devuelve un objeto
+
+    /*Imprime
+ //Valor 1 y done dice falso porque dice que todavia no finalizó. Se puede imprimir 6 veces seguidas y en el último da true osea finalizado porque hay 6 numeros en el array.
+
+Object { value: 1, done: false }
+ done: false
+ value: 1
+ <prototype>: Object { … }  */
+
+
+    /* 
+     console.log(iterador.next());
+      console.log(iterador.next());
+       console.log(iterador.next());
+        console.log(iterador.next());
+         console.log(iterador.next());
+          console.log(iterador.next());
+          */
+
+    /*Codigo para imprimir varias  lineas de console.log*/
+
+    //Ahora veremos realizar el console.log más eficiente en vez de imprimir varias veces.
+
+    //Veremos paso a paso como realizar esto.
+    console.log("EFICIENTE");
+    let next = iterador.next;  //Lo declaro como variable.
+    while (!next.done) { //Mientras done sea falso, por eso uso (!).
+      console.log(next.value); //Imprime solo el valor
+      next = iterador.next(); //Le digo al interprete que imprima la siguiente linea, seria el número 2, 3,4,5,6 del array. Finalizando.
+    }
+
+    /*Esto funciona con un new Set:: No repetiria elementos.
+    Podria con un string:: Colocaria cada letra por separado.
+    COn un MAP:  Mostrara  el elemneto con su propiedad.
+    Todo esto declarado en la constante base. */
+
+  </script>
+</body>
+
+</html>

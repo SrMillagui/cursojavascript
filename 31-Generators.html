@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generadores</title>
+</head>
+
+<body>
+  <h1><b>Generadores</b></h1>
+  <p>
+    Es una funcion que permite trabajar de forma más facil los itirebles. Convierte el código de una función en
+    iterable.
+  </p>
+
+  <h2><b></b></h2>
+
+  <script>
+    function* iterable() {  //colocamos asterisco despues de function. 
+      /* Yield Funciona como el return que indica a la función  que leera el primer yield y parará, luego al imprimer denuevo en la consola esta funcion se  imprimira el console.log y el yield parando nuevamente. Se invoca con console.log(iterador.next()); ya que es un iterador el que tiene esta funcion de recorrer.*/
+      yield "Primer Yield";
+      console.log("Primer console.log");
+      yield "Segundo yield";
+      console.log("Segundo console.log");
+      yield "Tercer yield";
+      yield "Cuarto yield";
+    }
+
+    let iterador = iterable();
+    /* console.log(iterador.next());
+     console.log(iterador.next());*/
+
+    /*Imprime:
+    
+Object { value: "Primer Yield", done: false } 
+En su desarrollo se ve que finaliza en false ya que todavia hay más información abajo a imprimir. 
+
+  done: false
+
+  value: "Primer Yield"
+
+    < prototype >: Object { … }  */
+
+
+    //Automaticemos esto::::
+    for (let y of iterador) {
+      console.log(y);
+    }
+
+    /*Imprime::
+     Primer Yield
+ Primer console.log
+ Segundo yield
+ Segundo console.log
+ Tercer yield 31
+ Cuarto yield
+
+ Se puede ver que solamente imprime el texto y no con los valores tipo elemento como el anterior no automatizado.*/
+
+    //Ahora veremos  que todos los yield queden en un arreglo.
+    //Imaginemos solicitamos a una EPI información y el resultado de cada arreglo lo guardamos en un arreglo para trabajarlo.
+
+    const arr = [...iterable()];
+    console.log(arr);
+
+    /*Imprime a consola por separado:
+    Array(4) [ "Primer Yield", "Segundo yield", "Tercer yield", "Cuarto yield" ]
+
+    Incluso separado en lineas:
+    0: "Primer Yield"
+
+1: "Segundo yield"
+
+2: "Tercer yield"
+
+3: "Cuarto yield"
+
+length: 4
+
+Incluso abajo su prototype. */
+
+
+    //Veremos ahora trabajar la asincronia y llevarla al cuadrado:
+
+    function cuadrado(valor) {  //declaro funcuin cuadrado que tienen un valor.
+      setTimeout(() => { //Declaro setTimeout para simular asincronia.
+        console.log({ valor, resultado: valor * valor })//declarado en llaves { }.
+      }, Math.random() * 1000); //Math.random es ejecute numero aleatorio. 1000 Hara que esto se imprima cada segundo.
+
+      return {  //Retorne el mismo objeto de console.log que imprime.
+        valor,
+        resultado: valor * valor
+      }
+    }
+
+    //Despues declaramos la funcion generadora para la acción.
+
+    function* generador() {
+      console.log("Inicia el Generador");
+      yield cuadrado(0);
+      yield cuadrado(1);
+      yield cuadrado(2);
+      yield cuadrado(3);
+      yield cuadrado(4);
+      yield cuadrado(5);
+      console.log("Fin del Generador");
+    }
+
+    //Ejecutaremos esta función:
+    //ejecutaremos todos de forma automatica.
+    /* Primero declaro variante donde estar el generador creado.
+    Luego le digo por cada yield que este en esta variante "maquinaGenerador" , imprimeme el yield "console.log(y)"*/
+    console.log("COMIENZA LE PROBLEM")
+    console.log(generador)
+
+    let gen = generador();
+    for (let y of gen) {
+      console.log(y);
+    }
+
+    /*Imprime dos veces esto::::::
+    
+    { valor: 3, resultado: 9 }
+    { valor: 5, resultado: 25 }
+    { valor: 1, resultado: 1 }
+    { valor: 4, resultado: 16 }
+    { valor: 2, resultado: 4 }
+    { valor: 0, resultado: 0 }
+    */
+
+
+    /*oBSERVACIÓN:
+    Se imprimiran aleatoriamente yaque no habra orden porque imprimira el que se cargue primero. Se podria poner mayor tiempo de espera como 4000.*/
+  </script>
+</body>
+
+</html>
