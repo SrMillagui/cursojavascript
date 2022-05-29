@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call/Apply/Bin</title>
+</head>
+
+<body>
+  <h1>Call/Apply/Bind</h1>
+  <p>
+    Call y Apply son parecidos, tienen la capacidad de invocar un ojeto desde afuara.
+
+  </p>
+  <h2>Veamos como funciona en JS</h2>
+
+  <script>
+    this.lugar = "Contexto global" //Coloco esto para simular el contexto global
+
+    function saludar() {
+      console.log(`${this.saludar}`)
+    }
+    const obj = {
+      saludar: "Saludo dentro de obj"
+    }
+    saludar.call(obj); //Llamo a saludar dentro de objeto, devuelve "Saludo dentro del objeto"
+    saludar.apply(obj); //Se ejecuta igual
+
+    //Veamos como se invoca si una funcion tiene concadenacion de valores
+
+    /*
+    Call será Pedro y apply Maria y mostraremos su nombre, edad y país en donde vive, veremos la diferencia a la hora de colocar sus datos.
+*/
+
+    function pais(nombre, edad) {
+      console.log(`Nombre: ${nombre} Edad: ${edad} Pais: ${this.pais}`)
+    }
+    const lugar = {
+      pais: "Argentina"
+    }
+
+    pais.call(lugar, "Pablo", "22"); //Usa solamente corchetes
+    pais.apply(lugar, ["Maria", "30"]); //Usa [ ...]
+    /*
+            Si usamos null en vez de lugar saldria de la funcion y tomara un dato externo, y si pusieramos this tmaria el entorno en donde esté.
+            */
+    console.clear();
+
+    this.nombre = "window"; //PAra visualizar datos de window
+    const persona = { // creo elemento const
+      nombre: "Bob",
+      saludar: function () {
+        console.log(`Hola ${this.nombre}`)//this invoca dentro del entorno de nombre
+      }
+    }
+    persona.saludar();
+
+    /*
+    AHora crearemos otra constante persona donde invocara el dato saludar pero no podra tomar el dato nombre ya que no le colocaremos, esto nos dará undefine
+    */
+    const personaDos = {
+      saludar: persona.saludar
+    }
+    personaDos.saludar()//Nos da Undefined ya que llamamos la acción saludar de  persona pero no escribimos el nombre dentro de la constante personaDos.
+
+    /*
+    Ahora veremos como podremos usar el nombre de la constante persona usando "bind"
+    */
+
+    const personaTres = {
+      saludar: persona.saludar.bind(persona)
+    }  //Usa el saludo y el nombre de la primer constante persona, se ejecuta el this declarado en esa constante.
+    personaTres.saludar(); //Resultado "Hola Bob"
+  </script>
+</body>
+
+</html>

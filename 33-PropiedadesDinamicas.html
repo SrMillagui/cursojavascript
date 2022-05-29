@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propiedades dinámicas de los objetos</title>
+</head>
+
+<body>
+  <h1>Priopiedades dinámicas de los objetos</h1>
+  <p>Se aplica cuando necesitamos colocar un id a cada usuario que recibimos, se plica en grandes cantidades.</p>
+
+  <script>
+    const aleatorio = Math.round(Math.random() * 100 + 5) //Aqui colocamos la parte dinamica de la función
+    const objUsuarios = {
+      propiedad: "Valor",//Explicación de propiedad comun y corriente, lo dinamico es lo que aparecera entre corchetes.
+      [`Id_${aleatorio}`]: "Valor aleatorio"  //aqui invocamos la parte dinamica dentro de los corchetes
+    };
+
+    const usuarios = ["Jose", "Pepe", "Marcelo", "Raul"];
+
+    console.log(objUsuarios);
+    //Si define un objeto la propiedad que se quiera colocar se usa corchete o punto
+    usuarios.forEach((usuario, index) => objUsuarios[`id_${index}`] = usuario);   //Por cada usuario, coloca usuario e index la funcion tendra las propiedades de forma dinamica id_  index.
+    console.log(objUsuarios);
+
+
+  </script>
+</body>
+
+</html>

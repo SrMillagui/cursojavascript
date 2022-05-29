@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>This</title>
+</head>
+
+<body>
+  <h1>This</h1>
+  <p>
+    L aparticularidad de this en el contsxto de navegador , osea forntend, es que hace referencia al objeto global,
+    (Window). En cambio al ser backend por ejemplo nodejs har{a referencias a terminal de comando.
+  </p>
+
+  <h2>
+    Veamos ejemplos en JS
+  </h2>
+
+  <script>
+    console.log(this);
+    console.log(window);  //Serian exactamente lo mismo
+    //Ahora le dare un nombre a window sin usar  variables para colocarlo adentro.
+
+    this.nombre = "Me llamo Pablo WIndow"; //Ahora window se llama Pable :D
+
+    //Si solo quiero imprimir el nombre de this ahora colocaremos de la siguiente manera
+
+    console.log(this.nombre)
+
+    //Vemos que this tiene la capacidad de invocar
+
+    //Veamos ahora colocarlo dentro de una función
+
+    function imprimir() {
+      console.log(this.imprimir);   //Ahora solamente escrbiendo imprimir me imprimira el nombre de windows.
+    }
+    imprimir();  //Invocacion de imprimir
+
+    //Ahora el contexto cambiara y estara el this dentro de un objeto { ... }  Tomando el nombre del objeto  y no mas el de window
+
+    const obj = {
+      nombre: "Ahora soy Patricia Window",
+      imprimir: function () {
+        console.log(this.nombre);  //Toma el nombre de este bloque
+      }
+    }
+    //Invocams el bloque,
+    obj.imprimir();
+
+    //Ahora imprimere dento de un objeto  invocando una funcion fuera de el. Tomará el objeto donde está para imrpimir el nombre de este objeto sin improtar que este afuera.
+
+    const obj2 = {
+      nombre: "Ya me cambie otra vez el Nombre",
+      imprimir: function () {
+        console.log(this.nombre);  //Toma el nombre de este bloque
+      }
+      //imprimir  //Supuestamente Como el nombre de la propiedad sera el mismo de la función quei quiero que realice le puedo simplificar asi, se puede ver que es igual que el ejemplo anterior.
+    }
+    obj2.imprimir();
+
+    /*
+    Veamos que pasa con las arrow function
+    A diferencia de solamente colocando function, estas toman el contexto de donde fue creada esa funcion y no el objeto donde se la invoca.
+    */
+
+    const obj3 = {
+      nombre: "Me llamo Arrow function ahora!",
+      imrpimir: () => {
+        console.log(this.nombre);
+      }
+    }
+
+    /*
+    Ahora veremos como se comporta con una funcion contructora
+    */
+
+    function Funcionconst(persona) { //la funcion tiene la propiedad persona
+      this.nombre = nombre;  // Se da el entorno y se toma a la propiedad  (persona) como entorno
+
+      //  return console.log(this.nombre);  //retornará la propiedad nombre ya declarada anteriormente.
+
+      return function () { //reurn con funcion anonima con mismo return, pero al no estar declarado el valor (nombre) ya que es una funcion dentro de otra y por si misma ya es otro entornoal no tener nombre en el entorno donde esta tomará en donde fué creada. 
+        console.log(this.nombre);
+      }
+
+      /*return () => console.log(this.nombre); Para tomar valor externo de bob*/
+    }
+    let bob = new Funcionconst("bob"); //Variable (bob) con la funcion constructora dentro declara con new. Ahora se puede invocar simplemente con bob.
+    bob();  //invoco la variable con su funcion
+    bob();
+  </script>
+</body>
+
+</html>
