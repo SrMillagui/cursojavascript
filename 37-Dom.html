@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="Es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dom</title>
+</head>
+
+<body>
+  <h1>Dom</h1>
+  <p>
+    <b> APIs:</b> <br>
+    Interfase de programacion de aplicación. Es aquella serie de objetos y mecanismos en javascript de navegadores, el
+    sistema oprativo, barras de navegación, etc. <br>
+    DOm: Document Object model: Seria lo que vemos en la pantalla es la iteraccion de JS con html.<br>
+    Bom: Browser Object Model: Seria el sistema operativo del usuario, la hubicacion geografica, etc.
+    CSSOm: CSS Objecto model. Seria cuando interactua JS con CSS.
+
+  </p>
+  <h3><b>vEREMOS ACTIVAR apIS QUE YA TIENEN los navegadores usando JS.</b></h3>
+
+  <script src="38-Dom.js">
+
+    let texto = "Hy! Claris Tones, lets go play, Chuik!!" //Cree la variante que contiene el texto a leer
+
+    const hablar = (texto) => speechSynthesis.speak(new SpeechSynthesisUtterance(texto));
+    /* Cree una constante que tienen la accion de hablar, hablara el texto en la funcion speechSintehesis, y new SpeechSyntesisUtterance contiene el (texto) de la variante creada :D.
+   */
+    hablar(texto);
+
+  </script>
+</body>
+
+</html>

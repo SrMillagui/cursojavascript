@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jason</title>
+</head>
+
+<body>
+  <h1>Jason</h1>
+  <p>
+    Java script Objecto notation:
+    Sirve como mediador para poder interactuar entre dos lenguajes que no se pueden comunicar entre si. Tambien actua
+    entre la pagina web y el servidor.
+  </p>
+
+  <script>
+
+    const jason = {
+      "cadena": "hola",
+      "numero": 33,
+      "booleano": true
+    }
+
+    console.log(JSON);
+
+    /*
+    Nos devuelve 
+    parse: ƒ parse()
+stringify: ƒ stringify()
+Symbol(Symbol.toStringTag): "JSON"
+[[Prototype]]: Object
+
+Veremos sobre PARSE Y STRINGIFY
+
+Parse: va analizar  una cadena de texto y la va convertir en un tipo de dato como objeto, arreglo, booleano, etc. 
+
+*/
+
+    console.log("{}");
+    console.log("[1,2.3]");
+    //Nos devuelve string, pudiendo identificar ya que estan en negritas.
+    //Si le ponemos JSON.parse nos imprimira el primero como objeto y el segundo como array.
+
+    console.log(JSON.parse("{}"));
+    console.log(JSON.parse("[1,2,3]"));
+    /*
+Imprime 
+{}
+[[Prototype]]: Object
+
+ [1, 2, 3]
+length: 3
+[[Prototype]]: Array(0)
+*/
+
+    /*
+    Stringify:
+    Hace lo contrario a Parse . Convierte objeto o valores validos para JS y los transforma en string (cadena de texto).
+    */
+
+    console.log(JSON.stringify({}));
+    console.log(JSON.stringify([1, 2, 3]));
+    console.log(JSON.stringify(jason));
+        //Uso  los mismos ejemplos pero sin comillas. Devolvera unacadena de texto.
+
+    /*
+    En conclusion:
+    Parse convierte en objetos el texto y stringify los ebjetos en texto. Segun sea el programa que tanto en servidor como en frontend estos podran transforma segun su necesidad los textos u objetos.
+    */
+  </script>
+</body>
+
+</html>
